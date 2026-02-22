@@ -1,0 +1,321 @@
+Excellent question — this is the **right moment** to ask it 👍
+I’ll give you a **clear, academic-safe project pathway** that matches **INFO813 requirements exactly**, so you don’t overdo the wrong things or miss marks.
+
+Think of this as your **roadmap from now → submission → presentation**.
+
+---
+
+# ✅ OFFICIAL PROJECT PATHWAY (INFO813-ALIGNED)
+
+I’ll structure this in **the same order as the marking rubric**, so whatever you do directly earns marks.
+
+---
+
+## 🔵 PHASE 0: Topic Approval (You already have this implicitly)
+
+**Your topic (framed academically):**
+
+> *Detection and classification of marine debris objects using an intelligent computer vision system.*
+
+Why this works:
+
+* Real-world problem ✔
+* Complex, non-trivial ✔
+* > 500 examples ✔
+* Multi-class classification ✔
+* Requires intelligent model ✔
+
+👉 You don’t need to change your dataset or topic.
+
+---
+
+## 🔵 PHASE 1: DATA ANALYSIS (Section 1 – 20 marks)
+
+### 🎯 Goal
+
+Show that you **understand the data**, not just use it.
+
+### 1.1 Description & Explanation (10 marks)
+
+**What you MUST do (in order):**
+
+1. **Define the problem**
+
+   * What is marine debris?
+   * Why detecting it matters (environmental, safety, monitoring)
+
+2. **Explain why this is suitable for an intelligent system**
+
+   * Manual inspection is slow and subjective
+   * Image-based detection needs pattern recognition
+   * Rule-based systems fail → AI needed
+
+3. **Describe the data source**
+
+   * Origin (Roboflow / contributors / image collection process)
+   * Not just “downloaded from Kaggle”
+
+4. **Describe the dataset**
+
+   * Total images
+   * Train/valid/test split
+   * Number of classes (15)
+   * Image resolution (416×416)
+   * Annotation format (YOLO bounding boxes)
+
+5. **Describe each variable**
+
+   * Input: pixel intensities
+   * Output: object class + bounding box
+   * Explain class imbalance
+
+📌 This section is **mostly writing**, not code.
+
+---
+
+### 1.2 Visualisation (10 marks)
+
+**Required pathway:**
+
+1. **Univariate visualisations**
+
+   * Class distribution bar chart
+   * Image resolution consistency
+
+2. **Multivariate / relational**
+
+   * Sample images with bounding boxes
+   * Class imbalance comparison
+   * Object size distribution (small vs large)
+
+3. **Justification**
+
+   * Why bar charts?
+   * Why bounding-box visualisation?
+   * What insight each visualisation provides
+
+4. **Interpretation**
+
+   * Which classes dominate?
+   * Which classes are rare?
+   * Why this affects modelling
+
+📌 Screenshots + explanation = marks.
+
+---
+
+## 🔵 PHASE 2: PROBLEM MODELLING (Section 2 – 50 marks)
+
+This is the **core of your project**.
+
+---
+
+### 2.1 Model Selection & Justification (10 marks)
+
+**Your pathway:**
+
+1. Define the task:
+
+   * Object detection = classification + localisation
+
+2. Discuss alternatives:
+
+   * Traditional ML → not suitable for images
+   * Two-stage detectors (Faster R-CNN) → slower
+   * Single-stage detectors (YOLO) → real-time
+
+3. Justify YOLOv11:
+
+   * End-to-end detection
+   * Efficiency
+   * Suitable for resource-limited systems
+
+4. Justify **YOLOv11n**
+
+   * CPU constraints
+   * Limited dataset size
+   * Trade-off between speed and accuracy
+
+📌 This is where **theory marks** come from.
+
+---
+
+### 2.2 Data Transformation (10 marks)
+
+This is where many students lose marks — you won’t.
+
+**Your pathway:**
+
+1. Image resizing to 416×416
+2. Normalisation of pixel values
+3. Bounding box normalisation (YOLO format)
+4. Data augmentation
+
+   * Flip
+   * Color jitter
+   * Mosaic
+5. Train/validation/test separation
+
+For EACH:
+
+* What you did
+* Why you did it
+* Why it suits YOLO
+
+---
+
+### 2.3 Implementation (15 marks)
+
+This is where **training from scratch** is CRITICAL.
+
+**Your pathway:**
+
+1. Explain “training from scratch”
+
+   * No pretrained weights
+   * Random weight initialisation
+   * Architecture defined via YAML
+
+2. Describe model architecture:
+
+   * Backbone
+   * Neck
+   * Detection head
+   * Total layers & parameters
+
+3. Training setup:
+
+   * Optimizer (AdamW)
+   * Learning rate
+   * Epochs
+   * CPU execution
+
+4. Training process:
+
+   * Loss functions
+   * Validation per epoch
+   * Checkpoint saving
+
+📌 You explain steps, not just show code.
+
+---
+
+### 2.4 Evaluation (15 marks)
+
+**Your pathway:**
+
+1. Metrics used:
+
+   * Precision
+   * Recall
+   * mAP@50
+   * mAP@50–95
+
+2. Why these metrics are appropriate
+
+3. Overall performance
+
+4. Per-class analysis
+
+5. Error analysis:
+
+   * Rare classes
+   * False negatives
+   * Class imbalance impact
+
+6. Limitations:
+
+   * Dataset size
+   * CPU training
+   * Nano model capacity
+
+---
+
+## 🔵 PHASE 3: SOFTWARE IMPLEMENTATION (20 marks)
+
+This is NOT about ML accuracy — it’s about **software quality**.
+
+---
+
+### 3.1 Python Application (15 marks)
+
+**Your pathway:**
+
+* Load trained model (`best.pt`)
+* User chooses:
+
+  * Image file OR
+  * Folder
+* Model runs inference
+* Results displayed/saved
+
+Options:
+
+* CLI (simpler, safer)
+* Streamlit (more impressive)
+
+Requirements:
+
+* Input validation
+* Clear outputs
+* Well-commented code
+
+---
+
+### 3.2 User Guide (5 marks)
+
+**Your pathway:**
+
+* Installation instructions
+* Required libraries
+* How to run program
+* Input format
+* Output explanation
+
+📌 This must be written clearly — markers run your code.
+
+---
+
+## 🔵 PHASE 4: PRESENTATION (10 marks)
+
+**Your 8–10 min structure:**
+
+1. Problem & motivation
+2. Dataset & analysis
+3. Model choice
+4. Training from scratch
+5. Results
+6. Software demo
+7. Limitations & future work
+
+---
+
+## 🧠 BIG PICTURE (ONE PARAGRAPH)
+
+> Your project pathway moves from understanding and analysing a real-world dataset, through the selection and construction of an intelligent model trained from scratch, to evaluation and deployment within an interactive software system, fully satisfying the learning outcomes LO2–LO5 of INFO813.
+
+---
+
+## ✅ WHAT YOU SHOULD DO NEXT (Very Clear)
+
+### Step-by-step from **today**:
+
+1️⃣ Lock **dataset & topic** (done)
+2️⃣ Start writing **Section 1.1** (Data description)
+3️⃣ Generate **visualisations**
+4️⃣ Train YOLOv11 **from scratch**
+5️⃣ Save results & metrics
+6️⃣ Build Python app
+7️⃣ Write report
+8️⃣ Prepare presentation
+
+---
+
+If you want, next I can:
+
+* Help you **write Section 1.1** (ready-to-submit)
+* Create **visualisation code + explanation**
+* Draft **model justification text**
+* Design **software interface**
+
+Just tell me **which phase you want to start with** 👌
